@@ -1,9 +1,10 @@
-{% extends 'base.html'%} {%block title%} Student Management System• Login
+
+{% extends 'base.html'%} {%block title%} Student Management System • Register
 {%endblock%} {%block content%}
 <div class="container">
-  <div class="login">
-    <form class="login-form">
-      <h3 class="login-title">STUDENT MANAGEMENT SYSTEM</h3>
+  <div class="register">
+    <form class="register-form">
+      <h3 class="register-title">STUDENT MANAGEMENT SYSTEM</h3>
       <img
         class="icon-image"
         src="{{url_for('static', filename='/images/icon.png')}}"
@@ -18,7 +19,12 @@
           placeholder="name@example.com"
         />
       </div>
-
+      <div class="mb-3">
+        <select class="form-select">
+          <option value="ADMIN">ADMIN</option>
+          <option value="STUDENT">STUDENT</option>
+        </select>
+      </div>
       <div class="mb-3">
         <label for="exampleFormControlInput2" class="form-label"
           >Password</label
@@ -30,14 +36,26 @@
           placeholder="password"
         />
       </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput3" class="form-label"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="exampleFormControlInput3"
+          placeholder="confirm password"
+        />
+      </div>
 
-      <button type="submit" class="btn btn-primary">LOGIN</button>
+      <button type="submit" class="btn btn-primary">REGISTER</button>
       <br />
       <div class="mb-3">
-        <h5>New to SMS?</h5>
+        <h5>Already having an account?</h5>
       </div>
+
       <button type="submit" class="btn btn-secondary">
-        <a href="/auth/register">REGISTER</a>
+        <a href="/auth/login">LOGIN</a>
       </button>
     </form>
   </div>

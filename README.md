@@ -1,6 +1,6 @@
 ### SMS (Student Management System)
 
-# We will create the admin then the admin is the one whose going to register the students (users). When students are going to be registered they may be able to log in with their credintials that the admin has created for them i.e. student student.
+# We will create the admin then the admin is the one whose going to register the students (users). When students are going to be registered they may be able to log in with their credentials that the admin has created for them i.e. student student.
 
 ##### We will use the following softwares:
 

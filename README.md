@@ -1,6 +1,6 @@
 ### SMS - Student Management System
 
-This is a simple student database management system using `mysql` and `flask`.
+This is a simple student database management system using `mongodb` and `flask`.
 
 ### Programming Languages
 
@@ -98,17 +98,25 @@ pip freeze > requirements.txt
 - role (ADMIN | STUDENT)
 ```
 
-- register (ADMIN)
+- register (ADMIN, STUDENT)
 
-  - email
+  - email, password, gender, role
 
 - login (ADMIN, STUDENT)
 
-- ADMIN -> REGISTER STUDENTS
-  : DEREGISTER STUDENTS
-  : EDIT STUDENTS
+  - email and password
 
-\*\* MONGODB
+- forgot password
+
+  - sending reset password links with secrete tokens to users
+
+- change password
+
+  - changing the password using a reset password token from an link obtained via email.
+
+- edit profile
+  - ADMIN can edit user's role and other components except the password
+  - STUDENT can edit profile components except the role which is managed by ADMINS only.
 
 ### Sending emails in Python
 

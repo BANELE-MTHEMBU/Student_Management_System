@@ -153,8 +153,8 @@ sendEmail("crispengari@gmail.com", "Hi", "Testing")
 
 ```py
 class Keys(object):
-    EMAIL = "<youremail>"
-    PASSWORD = "<password>"
+    EMAIL = "<your_email>"
+    PASSWORD = "<your_password>"
 ```
 
 ### Sending email as html.

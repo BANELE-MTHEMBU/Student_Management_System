@@ -1,3 +1,34 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.container {
+  height: 100%;
+}
+.forgot-password-link {
+  color: cornflowerblue;
+  margin-left: auto;
+  margin-bottom: 5px;
+}
+.users {
+  overflow-y: scroll;
+  width: 100%;
+  padding-bottom: 500px;
+  max-height: 500px;
+}
+.users::-webkit-scrollbar {
+  display: none;
+}
+.users-header {
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-top: 1px solid lightblue;
+  padding: 10px;
+  margin-bottom: unset;
+}
 .register,
 .login {
   justify-content: center;

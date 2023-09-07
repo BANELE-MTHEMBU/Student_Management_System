@@ -1,60 +1,84 @@
-
-{% extends 'base.html'%} {%block title%} Student Management System • Register
+{% extends 'base.html'%} {%block title%} Student Manage System • Register
 {%endblock%} {%block content%}
 <div class="container">
   <div class="register">
-    <form class="register-form">
+    <form action="#" method="post" class="register-form">
       <h3 class="register-title">STUDENT MANAGEMENT SYSTEM</h3>
       <img
         class="icon-image"
         src="{{url_for('static', filename='/images/icon.png')}}"
         alt="icon"
       />
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email</label>
+      <div class="mb-2">
         <input
           type="email"
+          name="email"
           class="form-control"
           id="exampleFormControlInput1"
           placeholder="name@example.com"
         />
       </div>
-      <div class="mb-3">
-        <select class="form-select">
+      <div class="mb-2">
+        <input
+          type="text"
+          name="firstName"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="First Name"
+        />
+      </div>
+      <div class="mb-2">
+        <input
+          type="text"
+          name="lastName"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Last Name"
+        />
+      </div>
+      <div class="mb-2">
+        <select class="form-select" name="gender">
+          <option value="MALE">MALE</option>
+          <option value="FEMALE">FEMALE</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <select class="form-select" name="role">
           <option value="ADMIN">ADMIN</option>
           <option value="STUDENT">STUDENT</option>
         </select>
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput2" class="form-label"
-          >Password</label
-        >
+      <div class="mb-2">
         <input
+          name="password"
           type="password"
           class="form-control"
           id="exampleFormControlInput2"
           placeholder="password"
         />
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput3" class="form-label"
-          >Confirm Password</label
-        >
+      <div class="mb-2">
         <input
+          name="confirmPassword"
           type="password"
           class="form-control"
           id="exampleFormControlInput3"
           placeholder="confirm password"
         />
       </div>
-
+      {%if ctx.error %}
+      <div class="alert alert-danger d-flex align-items-center" role="alert">
+        {{ctx.error}}
+      </div>
+      {%endif%}
       <button type="submit" class="btn btn-primary">REGISTER</button>
       <br />
-      <div class="mb-3">
+
+      <div class="mb-2">
         <h5>Already having an account?</h5>
       </div>
 
-      <button type="submit" class="btn btn-secondary">
+      <button type="button" class="btn btn-secondary">
         <a href="/auth/login">LOGIN</a>
       </button>
     </form>

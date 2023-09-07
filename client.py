@@ -10,4 +10,5 @@ client = MongoClient('mongodb://localhost:27017')
 db = client['sms']
 
 #creating a collection -> a collection in mongoDB is actually a table
-user = db["users"]
+users = db["users"]
+secretes = db["secretes"]

@@ -1,123 +1,3 @@
-### SMS - Student Management System
-
-This is a simple student database management system using `mongodb` and `flask`.
-
-### Programming Languages
-
-In this project we are using the following programming languages:
-
-```shell
-- python
-```
-
-### Database
-
-For the database we are going to use the following database
-
-```shell
-- mongodb
-```
-
-> Make sure that you have an instance of `mongodb` running in your computer.
-
-### How to contribute?
-
-1. You need to fork the repository.
-
-You need to run the following commands in-order to contribute to `Student_Management_System`.
-
-```shell
-git clone https://github.com/BANELE-MTHEMBU/Student_Management_System.git
-```
-
-Then:
-
-```shell
-cd Student_Management_System
-```
-
-You need to create a virtual environment by running the following command.
-
-```shell
-virtualenv venv
-# activate it
-.\venv\Scripts\activate
-```
-
-Then install packages that are currently used:
-
-```shell
-pip install -r requirements.txt
-```
-
-### Database
-
-All the database configuration are located in the `client.py` for both the `users` and `secretes` collections.
-
-```python
-
-# first importing the pymongo
-from pymongo import MongoClient
-
-#client is going to connect to MongoClient using the link from MongoDB
-#client(local host)
-client = MongoClient('mongodb://localhost:27017')
-
-# creating / connecting the database 'sms'
-db = client['sms']
-
-#creating a collection -> a collection in mongoDB is actually a table
-users = db["users"]
-secretes = db["secretes"]
-```
-
-### You are Done contributing??
-
-When you are done contributing we recommend you to run the following command before comitting changes
-to github.
-
-```shell
-pip freeze > requirements.txt
-```
-
-### SMS
-
-- bootstrap
-- mongodb
-- python
-- flask
-- css
-- html
-
-```shell
-# user
-- id
-- email
-- password
-- avatar
-- role (ADMIN | STUDENT)
-```
-
-- register (ADMIN, STUDENT)
-
-  - email, password, gender, role
-
-- login (ADMIN, STUDENT)
-
-  - email and password
-
-- forgot password
-
-  - sending reset password links with secrete tokens to users
-
-- change password
-
-  - changing the password using a reset password token from an link obtained via email.
-
-- edit profile
-  - ADMIN can edit user's role and other components except the password
-  - STUDENT can edit profile components except the role which is managed by ADMINS only.
-
 ### Sending emails in Python
 
 In this readme file we are going to learn how we can send emails using python. First thing first we are going to use `smtplib` library to send emails.
@@ -161,8 +41,8 @@ sendEmail("crispengari@gmail.com", "Hi", "Testing")
 
 ```py
 class Keys(object):
-    EMAIL = "<your_email>"
-    PASSWORD = "<your_password>"
+    EMAIL = "<youremail>"
+    PASSWORD = "<password>"
 ```
 
 ### Sending email as html.
@@ -212,5 +92,3 @@ def sendFancyEmail(to: str, body: str, subject: str):
 
 1. [realpython.com](https://realpython.com/python-send-email/)
 2. [stackoverflow.com](https://stackoverflow.com/questions/70261815/smtplib-smtpauthenticationerror-534-b5-7-9-application-specific-password-req)
-3. [python-and-mongodb](https://github.com/CrispenGari/python-and-mongodb)
-4. [01_Flask](https://github.com/CrispenGari/python-and-flask/tree/main/01_Flask)

@@ -1,3 +1,122 @@
-<!-- Extending from the base class html -->
+{% extends 'base.html'%} {%block title%} Student Manage System {%endblock%}
+{%block content%}
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img
+        height="30"
+        src="{{url_for('static', filename='/images/icon.png')}}"
+        alt="logo"
+      />
+      SMS</a
+    >
+    <form class="d-flex" action="/auth/logout">
+      <button class="btn btn-outline-success" type="submit">LOGOUT</button>
+    </form>
+  </div>
+</nav>
 
-{% extends 'base.html' %} {%block title%} Student Management System {%endblock%}
+<div class="container">
+  <div class="card mb-3 mt-3" style="max-width: 540px; margin: 0px auto">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {% if ctx.me.avatar %}
+        <img
+          src="{{ctx.me.avatar}}"
+          class="img-fluid rounded-start"
+          alt="avatar"
+        />
+        {%else%}
+        <img
+          src="https://st3.depositphotos.com/9998432/13335/v/600/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+          class="img-fluid rounded-start"
+          alt="avatar"
+        />
+        {%endif%}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ctx.me.firstName}} {{ctx.me.lastName}}</h5>
+          <p class="card-text">
+            <small> {{ctx.me.email}} </small>
+          </p>
+          <p class="card-text">
+            <small> {{ctx.me.bio}} </small>
+          </p>
+          <p class="card-text">
+            <small class="text-body-secondary"
+              >{{ctx.me.role}} • {{ctx.me.gender}}</small
+            >
+          </p>
+          <button class="btn btn-success" type="submit">
+            <a href="/profile/edit"> EDIT </a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="users-header">Registered Users</h1>
+    <div class="users">
+      {% for user in ctx.users %}
+      <div class="card mb-3 mt-3" style="max-width: 540px; margin: 0px auto">
+        <div class="row g-0">
+          <div class="col-md-4">
+            {% if user.avatar %}
+            <img
+              src="{{user.avatar}}"
+              class="img-fluid rounded-start"
+              alt="avatar"
+            />
+            {%else%}
+            <img
+              src="https://st3.depositphotos.com/9998432/13335/v/600/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+              class="img-fluid rounded-start"
+              alt="avatar"
+            />
+            {%endif%}
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              {% if ctx.me._id == user._id%}
+              <h5 class="card-title">you</h5>
+              {%else%}
+              <h5>{{user.firstName}} {{user.lastName}}</h5>
+              {%endif%}
+              <p class="card-text">
+                <small> {{user.email}} </small>
+              </p>
+              <p class="card-text">
+                <small> {{user.bio}} </small>
+              </p>
+              <p class="card-text">
+                <small class="text-body-secondary"
+                  >{{user.role}} • {{ctx.me.gender}}</small
+                >
+              </p>
+              {% if ctx.me._id == user._id%}
+              <button class="btn btn-success" type="submit">
+                <a href="/profile/edit"> EDIT </a>
+              </button>
+              {%else%} {% if ctx.me.role == "ADMIN"%}
+              <div class="buttons">
+                <button class="btn btn-success" type="submit">
+                  <a href="{{ url_for('edit_user_profile', id=user._id) }}">
+                    EDIT
+                  </a>
+                </button>
+                <button class="btn btn-danger" type="submit">
+                  <a href="{{ url_for('delete_user', id=user._id) }}">
+                    DELETE
+                  </a>
+                </button>
+              </div>
+              {%endif%} {%endif%}
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</div>
+{%endblock%}
